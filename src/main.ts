@@ -1,5 +1,8 @@
+// Import the core library
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+
+// Import the custom files
+import { AppModule } from '@/app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
