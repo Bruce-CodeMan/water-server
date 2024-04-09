@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 // Import the libraries from the external
 import { config } from "dotenv";
-import { connectionOptions } from 'ormconfig';
+import { connectionOptions } from '@/utils/orm.connection';
 
 const envFilePath = `.env.${process.env.NODE_ENV || `development`}`
 
