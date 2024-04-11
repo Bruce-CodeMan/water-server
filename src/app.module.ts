@@ -7,6 +7,7 @@ import { config } from "dotenv";
 
 // Import the custom files
 import { connectionOptions } from '@/utils/orm.connection';
+import { UserModule } from '@/modules/user/user.module';
 
 const envFilePath = `.env.${process.env.NODE_ENV || `development`}`
 
