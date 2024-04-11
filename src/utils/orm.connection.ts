@@ -1,31 +1,10 @@
-import * as fs from "fs";
-import * as path from "path";
-
-import * as dotenv from "dotenv";
+// Import the core libraries
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
+
+// Import the custom files
 import { DbEnum } from "@/enum/config.enum";
+import { loadConfig } from "@/utils/config.loader";
 
-/**
- * Reads and parses environment files, merging the default and environment-specific configurations.
- * @returns An object representing the parsed and combined environment variables.
- */
-function loadConfig(): Record<string, any> {
-  const basePath = process.cwd();
-  const defaultEnvPath = path.resolve(basePath, ".env");
-  const environment = process.env.NODE_ENV || `development`;
-  const envFilePath = path.resolve(basePath, `.env.${environment}`);
-
-  let config = {};
-
-  if(fs.existsSync(defaultEnvPath)) {
-    Object.assign(config, dotenv.parse(fs.readFileSync(defaultEnvPath)))
-  }
-  if(fs.existsSync(envFilePath)) {
-    Object.assign(config, dotenv.parse(fs.readFileSync(envFilePath)))
-  }
-
-  return config;
-}
 
 /**
  * Converts a string to a boolean or returns a default value.
